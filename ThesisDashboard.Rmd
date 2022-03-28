@@ -1,7 +1,9 @@
 ---
 title: "Equivalence Testing for Multiple Regression"
+author: "Alter & Counsell (2021)"
 output: 
   flexdashboard::flex_dashboard:
+    theme: flatly
     vertical_layout: fill
     social: menu
     source_code: embed
@@ -99,7 +101,6 @@ knitr::include_graphics('flowchart.png')
 datatable(simresults)
 ```
 
-
 Column {data-width=500}
 -----------------------------------------------------------------------
 
@@ -130,32 +131,18 @@ ggplotly(p0, tooltip = "text")
 ```
 
 
-About the Authors {data-icon="fa-user-ninja"}
+Contact the Authors {data-icon="fa-user-ninja"}
 =============================
-Column {data-width=500}
------------------------------------------------------------------------
-### Udi Alter
-[Email](mailto:udialter@yorku.ca) 
-[Website](https://udialter.com/)
-[Twitter](https://twitter.com/UdiAlter)
-<br>
-Udi is a PhD student at York University’s Quantitative Methods program in the Psychology Department. He is interested in equivalence testing, accuracy in parameter estimation, effect sizes, and Monte Carlo simulations. In addition, Udi is very passionate about teaching statistics, data science, programming, and philosophy of science. He strongly advocates for open-science practices, replicable and reproducible research, and I am an avid R user.
+<b>Udi Alter</b>  
+[udialter@yorku.ca](mailto:udialter@yorku.ca)  
+[udialter.com](https://udialter.com/)  
+[@UdiAlter](https://twitter.com/UdiAlter)
+<br><br>
+<b>Alyssa Counsell</b>  
+[a.counsell@ryerson.ca](mailto:a.counsell@ryerson.ca)  
+[alyssacounsell.com](https://www.alyssacounsell.com/)  
+[@AlyssaCounsell](https://twitter.com/AlyssaCounsell) 
 
-### Alyssa Counsell
-[Email](mailto:a.counsell@ryerson.ca) 
-[Website](https://www.alyssacounsell.com/)
-[Twitter](https://twitter.com/AlyssaCounsell)
-<br>
-Alyssa is an Assistant Professor of Quantitative Psychology and Director of the Psychology and Statistics Education Research (PASER) Lab at Ryerson University in Toronto, Ontario. Her primary research interests surround the use of quantitative methods and research design in psychology. Specifically, She is interested in psychological measurement, statistical modeling, equivalence testing, statistical literacy in psychology, attitudes toward statistics, mixed methods, data transparency and open science. Alyssa is also interested in applied research that focuses on anxiety and health psychology.
-
-
-Column {data-width=500}
------------------------------------------------------------------------
-### Udi Alter
-![](https://pbs.twimg.com/profile_images/1268985188928884738/WJfhMsqu_400x400.jpg)
-
-### Alyssa Counsell
-![](https://pbs.twimg.com/profile_images/1034883649915613184/v1JdCP73_400x400.jpg)
 
 References {data-icon="fa-bookmark"}
 =============================
