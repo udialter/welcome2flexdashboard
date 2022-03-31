@@ -1,0 +1,75 @@
+---
+title: "My First flexdashboard"
+author: "Your Name"
+output: 
+  flexdashboard::flex_dashboard:
+    theme: united
+    vertical_layout: fill
+    social: menu
+    source_code: embed
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+library(tidyverse)
+library(plotly)
+library(MetBrewer)
+library(DT)
+
+data <- sample_n(diamonds, 5000)
+
+```
+
+Column {data-width=400}
+-----------------------------------------------------------------------
+
+### CHART A
+
+```{r}
+p1 <- ggplot(data, aes(carat, fill = cut)) +
+  geom_density(alpha= 0.8, position = "stack")+scale_fill_manual(values=met.brewer("Monet", 10))+theme_classic()
+ggplotly(p1)
+```
+
+Column {data-width=300}
+-----------------------------------------------------------------------
+### TABLE A
+
+```{r}
+datatable(data)
+```
+
+
+Column {data-width=300}
+-----------------------------------------------------------------------
+
+### Proportions of Color Within Cut
+
+```{r, warning=FALSE}
+#qplot(cut, price/carat, data = data, geom = "jitter", alpha = I(1/2), color=cut)+scale_color_manual("Cut",values=met.brewer("Monet", 10))+ theme_classic()
+
+
+row_pct <- data %>%
+  group_by(cut) %>%
+  count(color) %>%
+  mutate(percent = (n/sum(n)) * 100,
+         label = sprintf("%0.0f%%", percent)) # using "%0.1f%%" rounds to one decimal place 
+
+p2 <- ggplot(data, aes(x=cut, fill=color)) + 
+  geom_bar(position="fill", aes(text=paste("Cut:", cut, "\nColour:", color))) +
+  geom_text(data=row_pct, aes(y=n,label=label),position=position_fill(vjust = 0.5), size = 3) + 
+  scale_fill_manual(values=met.brewer("Monet", 7))+
+  coord_flip() + theme_classic() + labs(x = "Cut", y = "Proporion")
+
+ggplotly(p2, tooltip = "text")
+```
+
+### Chart C
+
+```{r}
+
+p3 <- qplot(cut, price, data = data, geom = "jitter", alpha = I(1/2), color=cut, aes(text=paste("Cut: ", cut, "\nPrice: $",price, "\nCarat: ", carat, "\nColour: ", color,"\nClarity: ", clarity, sep = "")))+scale_color_manual("Cut",values=met.brewer("Monet", 5))+ theme_classic()+ labs(x = "Cut", y = "Price ($US)")+theme(legend.position = "none")
+ggplotly(p3, tooltip = "text")
+
+```
+
