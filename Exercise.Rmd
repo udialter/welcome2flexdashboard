@@ -1,9 +1,9 @@
 ---
 title: "My First flexdashboard"
-Author: "Your Name"
+author: "Your Name"
 output: 
   flexdashboard::flex_dashboard:
-    theme: paper
+    theme: united
     orientation: columns
     social: menu
     source_code: embed
@@ -16,15 +16,13 @@ library(datasets)
 library(shiny)
 library(plotly)
 library(tidyverse)
-mtcars2 <- mtcars[, c("mpg", "cyl", "wt")]
-
-#str(negligible::perfectionism)
+dat <- read.csv("~/Documents/{negligible} package/welcome2flexdashboard/merged_data_cleaned.csv")
 ```
 
 ```{r}
 # Reactive that returns the whole dataset if there is no brush
 selectedData <- reactive({
-  data <- brushedPoints(mtcars2, input$plot1_brush)
+  data <- brushedPoints(dat, input$plot1_brush)
   if (nrow(data) == 0)
     data <- mtcars2
     data
@@ -40,7 +38,7 @@ selectedData <- reactive({
 library(ggplot2)
 plotOutput("plot1", brush = brushOpts(id = "plot1_brush"))
 output$plot1 <- renderPlot({
-  ggplotly(ggplot(mtcars2, aes(wt, mpg)) + geom_point())
+  ggplotly(ggplot(dat, aes(Sweetness, Body)) + geom_point())
 
   })
 ```
@@ -49,7 +47,7 @@ output$plot1 <- renderPlot({
 
 ```{r}
 renderPlot({
-  ggplotly(ggplot(selectedData(), aes(factor(cyl), mpg))  + geom_boxplot())
+  ggplotly(ggplot(selectedData(), aes(sw, mpg))  + geom_boxplot())
 
 })
 ```
