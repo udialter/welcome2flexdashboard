@@ -1,0 +1,41 @@
+---
+title: "Untitled"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+```
+
+Column {data-width=650}
+-----------------------------------------------------------------------
+
+### Chart A
+
+```{r}
+#p1 <- ggplot(mpg, aes(cty, hwy)) +
+ # geom_count(col="tomato3", show.legend=F) +
+  #labs(y="hwy", x="cty")+ theme_classic()
+
+```
+
+Column {data-width=350}
+-----------------------------------------------------------------------
+
+### Chart B
+
+```{r}
+#p2 <- ggplot(mtcars, aes(x=factor(cyl), y=qsec, fill=cyl)) + geom_boxplot() + theme(legend.position="none")
+```
+
+### Chart C
+
+```{r}
+#p3 <- ggplot(data = iris) +
+ # aes(x = Petal.Length, fill = Species) +
+  #geom_density(alpha = 0.3)
+```
+

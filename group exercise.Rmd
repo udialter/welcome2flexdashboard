@@ -1,0 +1,54 @@
+---
+title: "My 1st Flexdashboard"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: rows
+    vertical_layout: fill
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+library(ggplot2)
+library(plotly)
+```
+
+row {data-width=650}
+-----------------------------------------------------------------------
+
+### mpg: city vs highway mileage
+
+```{r}
+# Scatterplot  # pre-set the bw theme.
+
+
+p1 <- ggplot(mpg, aes(cty, hwy)) +
+  geom_count(col="tomato3", show.legend=F) +
+  labs( 
+       y="hwy", 
+       x="cty")+ theme_classic()
+
+ggplotly(p1)
+```
+
+row {data-width=350}
+-----------------------------------------------------------------------
+
+### Chart B
+
+```{r}
+p2 <- ggplot(mtcars, aes(x=factor(cyl), y=qsec, fill=cyl)) + geom_boxplot() + theme(legend.position="none")
+
+ggplotly(p2)
+
+```
+
+### Chart C
+
+```{r}
+p3 <- ggplot(data = iris) +
+  aes(x = Petal.Length, fill = Species) +
+  geom_density(alpha = 0.3)
+
+ggplotly(p3)
+```
+
